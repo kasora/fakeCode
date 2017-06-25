@@ -1,0 +1,23 @@
+{
+  "name": "koa-test",
+  "version": "1.0.0",
+  "description": "just a test for koa",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "koa"
+  ],
+  "author": "kasora",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-router": "^7.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "supertest": "^3.0.0"
+  }
+}
