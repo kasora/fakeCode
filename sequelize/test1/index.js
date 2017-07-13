@@ -2,7 +2,7 @@
  * @Author: kasora 
  * @Date: 2017-07-13 21:24:11 
  * @Last Modified by: kasora
- * @Last Modified time: 2017-07-13 23:19:15
+ * @Last Modified time: 2017-07-14 00:13:12
  */
 'use strict';
 
@@ -27,6 +27,7 @@ const sequelize = new Sequelize(
 );
 
 // 定义 user 模型
+// 定义一个模型需要表名、字段与一些配置选项
 let User = sequelize.define('user',
   {
     name: {
@@ -38,6 +39,8 @@ let User = sequelize.define('user',
     }
   },
   {
+    // 默认为 false，sequelize 会默认为表名加上后缀s
+    // 此例中，如果没有 freezeTableName 则数据库中表名为 users
     freezeTableName: true,
     // 如果开启，则会在每次新增或修改数据时
     // 更新对应的 createdAt 和 updatedAt 字段
@@ -46,7 +49,7 @@ let User = sequelize.define('user',
   }
 );
 
-// 使模型与数据库同步
+// 使模型与数据库中的表同步
 let init_db = async () => {
 
   // 添加 force 来强制同步数据库
@@ -62,6 +65,9 @@ let init_db = async () => {
 // 插入一个数据
 let insertUser = async () => {
   let userInfo = await User.create({ name: 'kasora' });
+  // userInfo 此时是 User 的一个实例
+  // 除了数据库中的字段，还有一些内置的方法与参数
+  // 实例的 get 方法可以提取出单纯的数据集
   userInfo = userInfo.get();
   console.log(userInfo);
 };
