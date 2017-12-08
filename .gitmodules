@@ -1,0 +1,3 @@
+[submodule "gitSubMoudle/temp"]
+	path = gitSubMoudle/temp
+	url = https://github.com/kasora/test-git-module.git
